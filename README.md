@@ -17,20 +17,9 @@ Welcome to My Fund Me Smart Contract! This repository contains the codebase for 
   - [Technologies Used](#technologies-used)
   - [Features](#features)
   - [Installation](#installation)
-  - [Usage](#usage)
   - [Contributing](#contributing)
   - [License](#license)
   - [Contact](#contact)
-  - [Documentation](#documentation)
-  - [Usage](#usage-1)
-    - [Build](#build)
-    - [Test](#test)
-    - [Format](#format)
-    - [Gas Snapshots](#gas-snapshots)
-    - [Anvil](#anvil)
-    - [Deploy](#deploy)
-    - [Cast](#cast)
-    - [Help](#help)
 
 
 ## Technologies Used
@@ -63,24 +52,29 @@ To set up the project locally, follow these steps:
 2. Navigate to the project directory:
 
    ```bash
-   cd realtor
+   cd Fund_Me_Contract
    ```
 
-3. Install the necessary dependencies:
+3. Build the necessary dependencies:
 
    ```bash
-   npm install
+    forge build
    ```
 
-4. Start the development server:
+4. Start anvil:
 
    ```bash
-   npm start
+    anvil
    ```
 
-## Usage
+4. Start the script:
 
-Explore what I have to offer as a developer!
+    ```bash
+    forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+   ```
+
+5. Open the HTML file on browser:
+
 
 ## Contributing
 
@@ -102,67 +96,3 @@ This project is licensed under the [MIT License](LICENSE).
 ## Contact
 
 For questions or support, please contact Austin Margarone at austin@margarone.dev.
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
-
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```

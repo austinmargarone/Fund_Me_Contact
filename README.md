@@ -1,66 +1,98 @@
-## Foundry
+# Fund Me Smart Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Foundry consists of:
+![Preview Image](devpreview.png)
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
-## Documentation
+## Description
 
-https://book.getfoundry.sh/
+Welcome to My Fund Me Smart Contract! This repository contains the codebase for my Contract built in foundry with a simple frontend. Here you can connect your metamask wallet, see your balance and add funds to the contract!
 
-## Usage
+## Table of Contents
 
-### Build
+- [Fund Me Smart Contract](#fund-me-smart-contract)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Technologies Used](#technologies-used)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Contact](#contact)
 
-```shell
-$ forge build
-```
 
-### Test
+## Technologies Used
 
-```shell
-$ forge test
-```
+My Fund Me Contract is built using the following technologies:
 
-### Format
+- Solidity
+- Foundry
+- Anvil
+- HTML
+- CSS
+- JavaScript
 
-```shell
-$ forge fmt
-```
+## Features
 
-### Gas Snapshots
+- Connect MetaMask wallet
+- See Balance
+- Add funds to contract
+- Owner can withdrwal funds
 
-```shell
-$ forge snapshot
-```
+## Installation
 
-### Anvil
+To set up the project locally, follow these steps:
 
-```shell
-$ anvil
-```
+1. Clone this repository to your local machine:
 
-### Deploy
+   ```bash
+   git clone github.com/austinmargarone/portfolio.git
+   ```
+2. Navigate to the project directory:
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+   ```bash
+   cd Fund_Me_Contract
+   ```
 
-### Cast
+3. Build the necessary dependencies:
 
-```shell
-$ cast <subcommand>
-```
+   ```bash
+    forge build
+   ```
 
-### Help
+4. Start anvil:
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+   ```bash
+    anvil
+   ```
+
+4. Start the script:
+
+    ```bash
+    forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+   ```
+
+5. Open the HTML file on browser:
+
+
+## Contributing
+
+We welcome contributions from the community! To contribute to the project, follow these steps:
+
+1. Fork this repository.
+2. Create a new branch (`git checkout -b feature/your-feature-name`).
+3. Make your changes and commit them (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature/your-feature-name`).
+5. Create a new Pull Request.
+
+Please review our [Contributing Guidelines](CONTRIBUTING.md) for more details.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+
+## Contact
+
+For questions or support, please contact Austin Margarone at austin@margarone.dev.

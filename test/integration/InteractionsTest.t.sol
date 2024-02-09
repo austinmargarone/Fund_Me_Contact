@@ -30,8 +30,11 @@ contract InteractionsTest is StdCheats, Test {
     }
 
     function testUserCanFundAndOwnerWithdraw() public {
-        fundMe.fund{value: SEND_VALUE}(); // User funds the contract
-        fundMe.withdraw(); // Owner withdraws the funds
+        FundFundMe fundFundMe = new FundFundMe();
+        fundFundMe.fundFundMe(address(fundMe));
+
+        WithdrawFundMe withdrawFundMe = new WithdrawFundMe();
+        withdrawFundMe.withdrawFundMe(address(fundMe));
 
         assert(address(fundMe).balance == 0);
     }

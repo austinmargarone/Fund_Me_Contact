@@ -27,6 +27,16 @@ contract FundMe {
         _;
     }
 
+    // Functions Order:
+    //// constructor
+    //// receive
+    //// fallback
+    //// external
+    //// public
+    //// internal
+    //// private
+    //// view / pure
+
     constructor(address priceFeed) {
         s_priceFeed = AggregatorV3Interface(priceFeed);
         i_owner = msg.sender;
@@ -42,18 +52,19 @@ contract FundMe {
 
     function withdraw() public onlyOwner {
         for (uint256 funderIndex = 0; funderIndex < s_funders.length; funderIndex++) {
-            address payable funder = payable(s_funders[funderIndex]);
-            uint256 amountToWithdraw = s_addressToAmountFunded[funder];
-            if (amountToWithdraw > 0) {
-                s_addressToAmountFunded[funder] = 0;
-                funder.transfer(amountToWithdraw);
-            }
+            address funder = s_funders[funderIndex];
+            s_addressToAmountFunded[funder] = 0;
         }
         s_funders = new address[](0);
+        // Transfer vs call vs Send
+        // payable(msg.sender).transfer(address(this).balance);
+        (bool success,) = i_owner.call{value: address(this).balance}("");
+        require(success);
     }
 
     function cheaperWithdraw() public onlyOwner {
         address[] memory funders = s_funders;
+        // mappings can't be in memory, sorry!
         for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++) {
             address funder = funders[funderIndex];
             s_addressToAmountFunded[funder] = 0;
@@ -64,6 +75,13 @@ contract FundMe {
         require(success);
     }
 
+    /** Getter Functions */
+
+    /**
+     * @notice Gets the amount that an address has funded
+     *  @param fundingAddress the address of the funder
+     *  @return the amount funded
+     */
     function getAddressToAmountFunded(address fundingAddress) public view returns (uint256) {
         return s_addressToAmountFunded[fundingAddress];
     }

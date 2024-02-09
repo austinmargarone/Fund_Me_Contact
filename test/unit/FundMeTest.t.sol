@@ -8,6 +8,7 @@ import {HelperConfig} from "../../script/HelperConfig.s.sol";
 import {Test, console} from "forge-std/Test.sol";
 import {StdCheats} from "forge-std/StdCheats.sol";
 
+
 contract FundMeTest is StdCheats, Test {
     FundMe public fundMe;
     HelperConfig public helperConfig;
@@ -101,11 +102,7 @@ contract FundMeTest is StdCheats, Test {
     function testWithdrawFromMultipleFunders() public funded {
         uint160 numberOfFunders = 10;
         uint160 startingFunderIndex = 2;
-        for (
-            uint160 i = startingFunderIndex;
-            i < numberOfFunders + startingFunderIndex;
-            i++
-        ) {
+        for (uint160 i = startingFunderIndex; i < numberOfFunders + startingFunderIndex; i++) {
             // we get hoax from stdcheats
             // prank + deal
             hoax(address(i), STARTING_USER_BALANCE);
@@ -120,13 +117,7 @@ contract FundMeTest is StdCheats, Test {
         vm.stopPrank();
 
         assert(address(fundMe).balance == 0);
-        assert(
-            startingFundMeBalance + startingOwnerBalance ==
-                fundMe.getOwner().balance
-        );
-        assert(
-            (numberOfFunders + 1) * SEND_VALUE ==
-                fundMe.getOwner().balance - startingOwnerBalance
-        );
+        assert(startingFundMeBalance + startingOwnerBalance == fundMe.getOwner().balance);
+        assert((numberOfFunders + 1) * SEND_VALUE == fundMe.getOwner().balance - startingOwnerBalance);
     }
 }

@@ -24,20 +24,17 @@ contract HelperConfig is Script {
         }
     }
 
-    function getSepoliaEthConfig()
-        public
-        pure
-        returns (NetworkConfig memory sepoliaNetworkConfig)
-    {
+    function getPriceFeed() external view returns (address) {
+        return activeNetworkConfig.priceFeed;
+    }
+
+    function getSepoliaEthConfig() public pure returns (NetworkConfig memory sepoliaNetworkConfig) {
         sepoliaNetworkConfig = NetworkConfig({
             priceFeed: 0x694AA1769357215DE4FAC081bf1f309aDC325306 // ETH / USD
         });
     }
 
-    function getOrCreateAnvilEthConfig()
-        public
-        returns (NetworkConfig memory anvilNetworkConfig)
-    {
+    function getOrCreateAnvilEthConfig() public returns (NetworkConfig memory) {
         // Check to see if we set an active network config
         if (activeNetworkConfig.priceFeed != address(0)) {
             return activeNetworkConfig;
@@ -50,6 +47,7 @@ contract HelperConfig is Script {
         vm.stopBroadcast();
         emit HelperConfig__CreatedMockPriceFeed(address(mockPriceFeed));
 
-        anvilNetworkConfig = NetworkConfig({priceFeed: address(mockPriceFeed)});
+        NetworkConfig memory anvilNetworkConfig = NetworkConfig({priceFeed: address(mockPriceFeed)});
+        return anvilNetworkConfig;
     }
 }

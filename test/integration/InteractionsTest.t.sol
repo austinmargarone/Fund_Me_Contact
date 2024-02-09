@@ -29,11 +29,10 @@ contract InteractionsTest is StdCheats, Test {
         vm.deal(USER, STARTING_USER_BALANCE);
     }
 
-function testUserCanFundAndOwnerWithdraw() public {
-    fundMe.fund{value: SEND_VALUE}(); // User funds the contract
-    fundMe.withdraw(); // Owner withdraws the funds
+    function testUserCanFundAndOwnerWithdraw() public {
+        fundMe.fund{value: SEND_VALUE}(); // User funds the contract
+        fundMe.withdraw(); // Owner withdraws the funds
 
-    assert(address(fundMe).balance == 0);
-}
-
+        assert(address(fundMe).balance == 0);
+    }
 }

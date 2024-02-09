@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.19;
+
 import {Script} from "forge-std/Script.sol";
 import {MockV3Aggregator} from "../test/mocks/MockV3Aggregator.sol";
 
@@ -40,10 +41,7 @@ contract HelperConfig is Script {
             return activeNetworkConfig;
         }
         vm.startBroadcast();
-        MockV3Aggregator mockPriceFeed = new MockV3Aggregator(
-            DECIMALS,
-            INITIAL_PRICE
-        );
+        MockV3Aggregator mockPriceFeed = new MockV3Aggregator(DECIMALS, INITIAL_PRICE);
         vm.stopBroadcast();
         emit HelperConfig__CreatedMockPriceFeed(address(mockPriceFeed));
 

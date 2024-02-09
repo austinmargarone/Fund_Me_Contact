@@ -8,7 +8,6 @@ import {HelperConfig} from "../../script/HelperConfig.s.sol";
 import {Test, console} from "forge-std/Test.sol";
 import {StdCheats} from "forge-std/StdCheats.sol";
 
-
 contract FundMeTest is StdCheats, Test {
     FundMe public fundMe;
     HelperConfig public helperConfig;

@@ -70,13 +70,6 @@ function withdraw() public onlyOwner {
         require(success);
     }
 
-    /** Getter Functions */
-
-    /**
-     * @notice Gets the amount that an address has funded
-     *  @param fundingAddress the address of the funder
-     *  @return the amount funded
-     */
     function getAddressToAmountFunded(
         address fundingAddress
     ) public view returns (uint256) {
